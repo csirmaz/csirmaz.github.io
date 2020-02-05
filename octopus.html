@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Language" content="en">
+<meta name="robots" content="all,NOODP">
+<meta name="keywords" content="Csirmaz, Elod, Előd, Elöd, Pal, Pál">
+
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<meta name="viewport" content="initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Catamaran:100">
+<link rel="stylesheet" type="text/css" href="/assets/lightbox/css/lightbox.min.css"><link rel="stylesheet" type="text/css" href="/assets/css/main.css?200129003949"><script type="text/javascript" src="/assets/jquery/jquery-1.10.2.js"></script><script type="text/javascript" src="/assets/lightbox/js/lightbox.min.js"></script><title>Online Game - Octopus - Elod P Csirmaz</title><script>   lightbox.option({      resizeDuration: 0,      imageFadeDuration: 0,      wrapAround: true   });</script></head><body><div id="wrap"><div id="header"><div class="logowrap"><a class="logo" href="/">Elod Pal Csirmaz</a></div><ul class="mainmenu menu"><li class="mactive"><a href="/computing.html">Computing</a></li><li><a href="/fiction.html">Literature</a></li><li><a href="/contact.html">Contact</a></li></ul><ul class="midmenu menu"><li class="mactive"><a href="/computing.html">Software &amp; CompSci</a></li><li><a href="/design.html">Web &amp; Design</a></li><li><a target="_blank" href="http://www.linkedin.com/in/elodpalcsirmaz">LinkedIn&nbsp;&raquo;</a></li><li><a target="_blank" href="https://github.com/csirmaz">GitHub&nbsp;&raquo;</a></li><li><a target="_blank" href="http://epcsirmaz.blogspot.com">Tech Blog&nbsp;&raquo;</a></li><li class="last">&nbsp;</li></ul></div><div id="wrapinner"><div id="content"><div id="readablewidth"><div class="maincontent">
+
+<b>Octopus</b><br>
+A solitaire in JavaScript<br>
+<br>
+Click on the squares to turn them clockwise. The goal is to arrange all in a way that
+the edges of neighbouring squares match in colour. That is, this is wrong:
+<img style="border-right:1px solid #000" src="/assets/oct/c.gif" height="15px" alt="" /><img src="/assets/oct/d.gif" height="15px" alt="" />,
+whereas this is right:
+<img style="border-right:1px solid #7799ff" src="/assets/oct/6.gif" height="15px" alt="" /><img src="/assets/oct/d.gif" height="15px" alt="" />.
+Reload the page to get another puzzle.
+<br><br>
+
+<center>
+<script type="text/javascript">
+// <![CDATA[
+var imgpre='/assets/oct/';
+var karakter=['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'];
+var forgat=[[0,0],[8,2],[1,4],[9,6],
+            [2,8],[10,10],[3,12],[11,14],
+            [4,1],[12,3],[5,5],[13,7],
+            [6,9],[14,11],[7,13],[15,15]];
+var tabla=[[0],[0],[0],[0],[0],[0],[0],[0]];
+var tablar=[[0],[0],[0],[0],[0],[0],[0],[0]];
+var i;
+var j;
+var k;
+var b1;
+var b2;
+var hibapont=0;
+var coloryb=['#ffeeaa','#7799ff','#000'];
+
+function szomszedok(x, y, c){
+  var hp=0;
+  var a1;
+  var a2;
+  var a4;
+  var a8;
+  a1=((tabla[x][y]&1)>0?1:0);
+  a2=((tabla[x][y]&2)>0?1:0);
+  a4=((tabla[x][y]&4)>0?1:0);
+  a8=((tabla[x][y]&8)>0?1:0);
+  if(x>0){ if( ((tabla[x-1][y]&2)>0?1:0) == a8 ){ 
+    if(c==1){
+      document['tablaimg'+karakter[x-1]+karakter[y]].style.borderRight='1px solid '+coloryb[a8];
+      document['tablaimg'+karakter[x]+karakter[y]].style.borderLeft='1px solid '+coloryb[a8];
+    }
+  }else{ 
+    if(c==1){
+      document['tablaimg'+karakter[x-1]+karakter[y]].style.borderRight='1px solid '+coloryb[2];
+      document['tablaimg'+karakter[x]+karakter[y]].style.borderLeft='1px solid '+coloryb[2];
+    }
+    hp++; 
+  }}
+  if(x<7){ if( ((tabla[x+1][y]&8)>0?1:0) == a2 ){ 
+    if(c==1){
+      document['tablaimg'+karakter[x]+karakter[y]].style.borderRight='1px solid '+coloryb[a2];
+      document['tablaimg'+karakter[x+1]+karakter[y]].style.borderLeft='1px solid '+coloryb[a2];
+    }
+  }else{ 
+    if(c==1){
+      document['tablaimg'+karakter[x]+karakter[y]].style.borderRight='1px solid '+coloryb[2];
+      document['tablaimg'+karakter[x+1]+karakter[y]].style.borderLeft='1px solid '+coloryb[2];
+    }
+    hp++; 
+  }}
+  if(y>0){ if( ((tabla[x][y-1]&4)>0?1:0) == a1 ){ 
+    if(c==1){
+      document['tablaimg'+karakter[x]+karakter[y-1]].style.borderBottom='1px solid '+coloryb[a1];
+      document['tablaimg'+karakter[x]+karakter[y]].style.borderTop='1px solid '+coloryb[a1];
+    }
+  }else{ 
+    if(c==1){
+      document['tablaimg'+karakter[x]+karakter[y-1]].style.borderBottom='1px solid '+coloryb[2];
+      document['tablaimg'+karakter[x]+karakter[y]].style.borderTop='1px solid '+coloryb[2];
+    }
+    hp++; 
+  }}
+  if(y<7){ if( ((tabla[x][y+1]&1)>0?1:0) == a4 ){ 
+    if(c==1){
+      document['tablaimg'+karakter[x]+karakter[y]].style.borderBottom='1px solid '+coloryb[a4];
+      document['tablaimg'+karakter[x]+karakter[y+1]].style.borderTop='1px solid '+coloryb[a4];
+    }
+  }else{ 
+    if(c==1){
+      document['tablaimg'+karakter[x]+karakter[y]].style.borderBottom='1px solid '+coloryb[2];
+      document['tablaimg'+karakter[x]+karakter[y+1]].style.borderTop='1px solid '+coloryb[2];
+    }
+    hp++; 
+  }}
+  return(hp);
+}
+
+function forgass(x, y) {
+  var p = 0;
+  var o = document['tablaimg'+karakter[x]+karakter[y]];
+  
+  o.src = imgpre+karakter[tabla[x][y]]+'r.gif'; // 45-degree rotation
+
+  setTimeout(function() {
+
+    hibapont -= szomszedok(x, y, 0);
+
+    tabla[x][y] = forgat[tabla[x][y]][1];
+    o.src = imgpre+karakter[tabla[x][y]]+'.gif';
+ 
+    hibapont += szomszedok(x, y, 1);
+    console.log(hibapont);
+    if (hibapont == 0) {
+      setTimeout(function() { // allow time for the image to render
+        alert('All done. Congratulations!'); 
+      }, 100);
+    }
+  }, 150);
+}
+
+function getone(b,c,d,e){
+  var a1;
+  var a2;
+  var a3;
+  var a4;
+  if(b==0){ a1=Math.floor(Math.random()*2); }else{ a1=c; }
+  a2=Math.floor(Math.random()*2);
+  a3=Math.floor(Math.random()*2);
+  if(d==0){ a4=Math.floor(Math.random()*2); }else{ a4=e; }
+  return(a1+a2*2+a3*4+a4*8);
+}
+
+tabla[0][0]=getone(0,0,0,0);
+for(i=1;i<8;i++){
+  tabla[i][0]=getone(0,0,1,((tabla[i-1][0]&2)>0?1:0));
+  tabla[0][i]=getone(1,((tabla[0][i-1]&4)>0?1:0),0,0);
+}
+for(i=1;i<8;i++){ for(j=1;j<8;j++){
+  tabla[i][j]=getone(1,((tabla[i][j-1]&4)>0?1:0),1,((tabla[i-1][j]&2)>0?1:0));
+}}
+for(i=0;i<8;i++){ for(j=0;j<8;j++){ for(k=0;k<Math.floor(Math.random()*4);k++){
+  tabla[i][j]=forgat[tabla[i][j]][0];
+}
+  tablar[i][j]=0;
+}}
+
+
+document.write('<table class="rawtable" style="line-height:0px;border:1px solid #000;">');
+for(j=0;j<8;j++){
+  document.write('<tr>');
+  for(i=0;i<8;i++){
+    document.write('<td><img style="border:1px solid #000" width="40px" height="40px" src="'+imgpre+karakter[tabla[i][j]]+'.gif" name="tablaimg'+karakter[i]+karakter[j]+'" onclick="forgass('+i+','+j+')" /></td>');
+  }
+  document.write('</tr>');
+}
+document.write('</table>');
+for(i=0;i<16;i++){
+  document.write('<img width="1px" height="1px" src="'+imgpre+karakter[i]+'.gif" />');
+  document.write('<img width="1px" height="1px" src="'+imgpre+karakter[i]+'r.gif" />');
+}
+
+for(i=1;i<8;i++){
+  b1=((tabla[i-1][0]&2)>0?1:0);
+  b2=((tabla[i][0]&8)>0?1:0);
+  if(b1!=b2){hibapont++;
+    document['tablaimg'+karakter[i-1]+karakter[0]].style.borderRight='1px solid '+coloryb[2];
+    document['tablaimg'+karakter[i]+karakter[0]].style.borderLeft='1px solid '+coloryb[2];
+  }else{
+    document['tablaimg'+karakter[i-1]+karakter[0]].style.borderRight='1px solid '+coloryb[b1];
+    document['tablaimg'+karakter[i]+karakter[0]].style.borderLeft='1px solid '+coloryb[b1];
+  }
+  b1=((tabla[0][i-1]&4)>0?1:0);
+  b2=((tabla[0][i]&1)>0?1:0);
+  if(b1!=b2){hibapont++;
+    document['tablaimg'+karakter[0]+karakter[i-1]].style.borderBottom='1px solid '+coloryb[2];
+    document['tablaimg'+karakter[0]+karakter[i]].style.borderTop='1px solid '+coloryb[2];
+  }else{
+    document['tablaimg'+karakter[0]+karakter[i-1]].style.borderBottom='1px solid '+coloryb[b1];
+    document['tablaimg'+karakter[0]+karakter[i]].style.borderTop='1px solid '+coloryb[b1];
+  }
+}
+for(i=1;i<8;i++){ for(j=1;j<8;j++){
+  b1=((tabla[i-1][j]&2)>0?1:0);
+  b2=((tabla[i][j]&8)>0?1:0);
+  if(b1!=b2){hibapont++;
+    document['tablaimg'+karakter[i-1]+karakter[j]].style.borderRight='1px solid '+coloryb[2];
+    document['tablaimg'+karakter[i]+karakter[j]].style.borderLeft='1px solid '+coloryb[2];
+  }else{
+    document['tablaimg'+karakter[i-1]+karakter[j]].style.borderRight='1px solid '+coloryb[b1];
+    document['tablaimg'+karakter[i]+karakter[j]].style.borderLeft='1px solid '+coloryb[b1];
+  }
+  b1=((tabla[i][j-1]&4)>0?1:0);
+  b2=((tabla[i][j]&1)>0?1:0);
+  if(b1!=b2){hibapont++;
+    document['tablaimg'+karakter[i]+karakter[j-1]].style.borderBottom='1px solid '+coloryb[2];
+    document['tablaimg'+karakter[i]+karakter[j]].style.borderTop='1px solid '+coloryb[2];
+  }else{
+    document['tablaimg'+karakter[i]+karakter[j-1]].style.borderBottom='1px solid '+coloryb[b1];
+    document['tablaimg'+karakter[i]+karakter[j]].style.borderTop='1px solid '+coloryb[b1];
+  }
+}}
+// ]]>
+</script>
+
+</center></div></div></div><div id="submtdwrap"><div id="submtd"><div id="submtdinner"><div class="decor"></div><ul class="submenu"><li><a target="_blank" href="/files/linearize.pdf">Interpreting Neural Networks&nbsp;&raquo;</a></li><li><a href="/algebraic-file-synchronization-2.html">Algebraic File Synchronization: Adequacy and Completeness</a></li><li><a href="/algsyn.html">An Algebraic Approach to File Synchronization</a></li><li><a target="_blank" href="/files/csirmaz-protokoll.pdf">A Transmission Protocol over the LP Port&nbsp;&raquo;</a></li><li><a target="_blank" href="https://github.com/csirmaz/superloop">Superloop RNNs&nbsp;&raquo;</a></li><li><a target="_blank" href="https://github.com/csirmaz/TrainableOnlineClustering">Trainable Online Clustering&nbsp;&raquo;</a></li><li><a href="/php-beautifier-filters.html">PHP Beautifier Filters</a></li><li><a target="_blank" href="/NetArranger/">NetArranger&nbsp;&raquo;</a></li><li><a target="_blank" href="https://github.com/csirmaz/ESFS">ESFS: Snapshotting Filesystem&nbsp;&raquo;</a></li><li><a target="_blank" href="/athregeum/2009/drops-a-kinetic-painting/">Drops: A Kinetic Painting&nbsp;&raquo;</a></li><li><a href="/jmc-interface.html">Building an Interface</a></li><li class="mactive"><a href="/octopus.html">Octopus: A Puzzle Game</a></li><li><a href="/quarkxpress-word-footnotes.html">Footnote Macro</a></li><li><a href="/automata.html">Various Automata</a></li></ul></div></div></div><div id="sidebar"><div class="decor"></div><div class="sidebari"><div class="sec"><a href="http://www.linkedin.com/in/elodpalcsirmaz" target="_blank" class="sectitle"  rel="nofollow"><img src="/assets/img/base/linkedin.gif" style="vertical-align:-2px;" alt="LinkedIn Logo" /> LinkedIn &raquo;</a></div><div class="sec"><a href="https://github.com/csirmaz" target="_blank" class="sectitle">GitHub &raquo;</a></div>      <div class="sec">
+         <a class="sectitle" target="_blank" href="http://epcsirmaz.blogspot.com/">Tech blog &raquo;</a>
+         <ul id="blogentries" class="teaser">            <li class="more"><a target="_blank" href="http://epcsirmaz.blogspot.com/">Read the blog &raquo;</a></li>
+         </ul>
+      </div><div class="sec"><a href="https://arxiv.org/a/csirmaz_e_1.html" target="_blank" class="sectitle">arXiv &raquo;</a></div></div></div></div></div><div id="footer"><a href="/adpolicy">Terms and Conditions, Cookie and Privacy Policy</a></div></body></html>

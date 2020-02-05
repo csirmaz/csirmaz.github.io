@@ -1,0 +1,251 @@
+LingCh by Elod Csirmaz
+
+LingCh is a DOS program for drawing tree diagrams.
+
+1. The Editor
+
+When editing, the tree is represented by a simplified chart: the lines
+connecting the nodes are omitted and children (subordinated nodes) are
+found to the right of the parent node. Siblings (coordinated nodes) are
+under each other. For example, a tree represented in the editor as
+
+        S       NP      Det
+                        N
+                VP      V
+
+is, in reality
+
+                S
+             .    .
+           .        .
+         NP           VP
+        .  .          .
+       .    .         .
+      Det    N        V
+
+The cursor, which is a red line under the text of a node can be moved by
+pressing the arrow keys. Up and Down keys move between siblings
+(daughters of a parent node), while Left moves one level 'up' (to the
+parent node) and Right moves 'down' to the first daughter. Keys (,) and (.)
+(for historical reasons) are identical to Up and Down, respectively.
+
+Under the tree, in yellow, brief mnemonic codes are shown for the various
+functions of the program. For more about the functions, see the section
+on the menu, below.
+
+And lastly, in the bottom right corner, in white, the number of the current
+node is printed. This code is needed _only_ for adding extra lines to the
+diagram (see below).
+
+2. The menu -- the functions
+
+The functions can be reached either by pressing the key associated to them,
+or by selecting the function from the menu. The menu can be invoked by
+pressing either (?) or (ESC). One can leave the menu (return to the editor)
+by pressing either key again. When the menu is active, the highlighted item
+is green and under the mnemonic codes a little description appears of the
+current function. Arrows move the highlight, (ENTER) selects the active
+item.
+
+The full list of the functions:
+Mnemonic        Key     Description
+code
+
+?               (?)     Invokes the menu, and, with the short descriptions,
+                        provides help. (ESC) is identical to (?).
+
+arrows          arrows  This is not a real function, this element merely
+                        informs the user that arrows can be used to move the 
+                        cursor in the editor.
+
+Edit            (e)     Modifies the text of a node. After pressing the
+                        key, type the new text and then press (ENTER).
+                        Pressing (ENTER) also invokes this function.
+
+                        To get a node without text, that is, a node where
+                        lines are simply connected, enter "|" as the text
+                        of the node. For other signs with special meanings
+                        in the text, see function Special Characters,
+                        below.
+
+Ins (Insert)    (i)     Inserts a node below the current node. The text of
+                        the new node defaults to "___", which can be later
+                        modified. The text of the first node is, by
+                        default, "S".
+
+Draw            (d)     Draws a nice version of the tree. After the program
+                        has finished drawing, press any key to return to
+                        the editor. One of the two ways of how you can insert
+                        the diagram into a word processor is to run the
+                        program under Windows, press PrintScreen button to
+                        grab the screen (the system will copy it to the
+                        clipboard) and then paste it into your document.
+                        Clipping of the image might be necessary.
+
+bMp (BMP)       (m)     Generates a BMP file containing the diagram. The
+                        program will ask you for a filename (you can press
+                        (ENTER) to use the default C:\WINDOWS\DESKTOP\OUT.BMP 
+                        or any other key to give a custom filename) and then it
+                        will write the picture out into that file. You can
+                        easily insert this picture into any word processor.
+                        In Word, magnifying the image to 200% will make the 
+                        letters be approximately 12p large.
+
+Quit            (q)     Quits the program.
+
+Re (Restart)    (r)     Erases tree, sets everything back to default.
+
+cuT             (t)     Cuts out a subtree including the current item.
+
+tYe (tie)       (y)     Inserts the subtree cut out for the last time
+                        under the current node. These two functions can be
+                        used to reorder siblings or move large parts of the
+                        tree. If you don't "tYe" a cut subtree, it will be
+                        lost forever. (The program warns you before losing a
+                        subtree.)
+
+Alt (Alter)     (a)     Used to push a subtree down by one level. Press (a)
+                        multiple times to push the subtree down by more
+                        levels. Key (Shift)-(A) brings the subtree back.
+                        This feature is useful if you want to arrange
+                        terminal nodes (words of a sentence, for example)
+                        in one line.
+
+H (Horizontal)  (h)     The program can draw a horizontal line from the
+                        first children of a node to the last one. Pressing
+                        (h) selects or deselects this feature for the
+                        current node. If the feature is selected, the text
+                        of the node becomes light blue. This feature allows
+                        you to draw triangles representing unanalysed
+                        parts. (See line types for another way to draw a
+                        triangle.)
+
+alP (align Parent) (p)
+                        The program can align a mother node
+                        to be exactly above the selected child. By
+                        pressing (p) when the appropriate child is 
+                        active, this feature can be selected or deselected. 
+                        When this feature is active, the text of the child 
+                        node is printed in light purple.
+
+Line            (l)     Changes the type of the line between the current node
+                        and its parent. There are four line types: normal
+                        line, no line, dashed line and triangle "line".
+                        The text of the node is printed in bright white,
+                        dark grey, normal white or yellow, according to
+                        the line type.
+
+Xlin (eXtra)    (x)     Adds custom lines to the diagram. You can define 8
+                        extra lines at maximum, by giving the number of the
+                        node they point from, the number of the node they
+                        point to and the line type. Press buttons 1 to 8 to
+                        modify the parameters of a given line. Follow the
+                        instructions on-screen.
+
+                        Line types are determined as follows: normal lines
+                        are drawn from below the first node to the top of the
+                        second node. Dashed lines are arranged in the same
+                        way. 'To top' and 'to top dashed' lines are drawn from
+                        the top of the first node to the top of the second
+                        node. And finally, 'raise' lines are dashed, and they
+                        form an L from the left or right side of the first
+                        node to the bottom of the second node.
+
+                        To insert raise-lines that do not start horizontally,
+                        but first go down, then turn to the left or to the
+                        right, and then go up, insert a node below the first
+                        node with one of the first two special symbols as its
+                        text; set its line type to dashed, and insert the
+                        raise-line starting from this node.
+
+Chr (Special Characters)
+                (c)     Prints a list of so-called special characters. You
+                        can use all the 256 ASCII characters when editing the
+                        text of a node by pressing the Alt key, holding it,
+                        typing the ASCII code of the desired character ON THE
+                        KEYPAD (the 17 keys arranged in a rectangle on the
+                        right part of the keyboard), and releasing the Alt key
+                        afterwards. Some of these signs are substituted by
+                        the program for special characters in order to make
+                        the most important IPA symbols available. In the list,
+                        the first column represents these substitutions.
+                        Characters printed in white followed by their ASCII
+                        codes are substituted for the purple signs next to
+                        them. The white character will appear in the
+                        editor, substitutions take place during the drawing
+                        process only. The second column lists some ordinary
+                        ASCII characters that can be inserted using the same
+                        method.
+
+                        Press (s) to suppress or enable the substitution. If
+                        substitution is suppressed, all ASCII characters are
+                        available for use in the tree (except for the first
+                        two signs). Press (a) to get a table of all available 
+                        ASCII characters, or press (ESC) to return to the
+                        editor.
+
+Box (textBox)   (b)     You can define at most 8 textboxes. These textboxes
+                        contain a one-line string which is printed at a
+                        given place before drawing the actual diagram. You
+                        can use textboxes to include sentence number or the
+                        translation of the analysed sentence, etc. Special
+                        characters can be used. 
+                        Coordinates are character, not pixel-based, that
+                        is, adding one to the y coordinate will shift the
+                        textbox down by one line. x=0 y=0 is the upper left
+                        corner of the screen. Follow the instructions on
+                        the screen to modify any of the textboxes, or press
+                        (ESC) to return to the editor.
+
+Vsp (custom Vertical space)
+                (v)     Adjusts the space (measured in lines) between the
+                        level containing the current node and the level
+                        above it. The space is measured in a way that
+                        setting it to 1 will leave no space between the two
+                        levels. If you set this amount to 0, the default
+                        space will be used. Adjusting the custom vertical
+                        space of level 0 (the topmost) can shift the whole
+                        tree down and is identical to the top margin (see
+                        below). This feature is useful if you want to
+                        include morpheme-by-morpheme translation under the
+                        tree with no space above it.
+
+Set (Settings)  (s)     Here, various global variables can be adjusted,
+                        such as the default vertical space between
+                        levels, the horizontal space between
+                        neighbouring nodes, the left margin (useful if
+                        you want to put a textbox to the left of the tree),
+                        top margin (these numbers need not be integers,
+                        fractions can be used); whether special-symbol-
+                        substitution should be suppressed and finally, whether
+                        the program should center parent nodes to the center
+                        of the whole subtree below them, or to the center of
+                        its immediate children. This latter method is the
+                        usual way to draw linguistic tree diagrams.
+
+File            (f)     File operations, here, you can save the tree into a
+                        file for future use. Functions Save As and Open are
+                        always possible to select, while Save can be
+                        selected only if the program already knows which
+                        file to write (that is, after loading or saving the
+                        tree). Be careful not to overwrite an existing
+                        file.
+
+3. Invoking the program
+
+Simply run LINGCH.EXE. LingCh will automatically try to load a tree
+if the proper filename is given as its argument in the command line.
+
+4. System requirements
+
+LingCh is MS-DOS compatible. It requires VGA resolution (640x480x16).
+
+5. Limitations
+
+Maximum number of nodes: 60
+Maximum number of children of one node: 10
+Maximum number of levels: 20 (also restricted by the amount of memory
+                             available)
+Maximum number of textboxes: 8
+Maximum number of additional lines: 8
+

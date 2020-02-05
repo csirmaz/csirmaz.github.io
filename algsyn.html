@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Language" content="en">
+<meta name="robots" content="all,NOODP">
+<meta name="keywords" content="Csirmaz, Elod, Előd, Elöd, Pal, Pál">
+
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<meta name="viewport" content="initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Catamaran:100">
+<link rel="stylesheet" type="text/css" href="/assets/lightbox/css/lightbox.min.css"><link rel="stylesheet" type="text/css" href="/assets/css/main.css?200129003949"><script type="text/javascript" src="/assets/jquery/jquery-1.10.2.js"></script><script type="text/javascript" src="/assets/lightbox/js/lightbox.min.js"></script><title>An Algebraic Approach to File Synchronization - Elod P Csirmaz</title><script>   lightbox.option({      resizeDuration: 0,      imageFadeDuration: 0,      wrapAround: true   });</script></head><body><div id="wrap"><div id="header"><div class="logowrap"><a class="logo" href="/">Elod Pal Csirmaz</a></div><ul class="mainmenu menu"><li class="mactive"><a href="/computing.html">Computing</a></li><li><a href="/fiction.html">Literature</a></li><li><a href="/contact.html">Contact</a></li></ul><ul class="midmenu menu"><li class="mactive"><a href="/computing.html">Software &amp; CompSci</a></li><li><a href="/design.html">Web &amp; Design</a></li><li><a target="_blank" href="http://www.linkedin.com/in/elodpalcsirmaz">LinkedIn&nbsp;&raquo;</a></li><li><a target="_blank" href="https://github.com/csirmaz">GitHub&nbsp;&raquo;</a></li><li><a target="_blank" href="http://epcsirmaz.blogspot.com">Tech Blog&nbsp;&raquo;</a></li><li class="last">&nbsp;</li></ul></div><div id="wrapinner"><div id="content"><div id="readablewidth"><div class="maincontent">
+
+<h1>An Algebraic Approach to File Synchronization</h1>
+
+<div itemscope itemtype="http://schema.org/ScholarlyArticle">
+
+<p>
+<span itemprop="author">Norman Ramsey</span> and <span itemprop="author">Elod Csirmaz</span>.
+<span itemprop="name">An Algebraic Approach to File Synchronization</span>.
+<span itemprop="isPartOf" itemscope itemtype="http://schema.org/Periodical">
+In <i><span itemprop="name">Proceedings of the Joint 8<span style="font-size:75%; vertical-align:top">th</span> European Software Engineering Conference
+and 9<span style="font-size:75%; vertical-align:top">th</span> ACM SIGSOFT Symposium on the Foundations of Software Engineering</span>.</i>
+</span>
+<span itemprop="publisher">ACM Press</span>, <span itemprop="datePublished">2001</span>. 
+<span itemprop="pageStart">175</span>&#8211;<span itemprop="pageEnd">185</span>.</p>
+
+<h3>Abstract</h3>
+<p itemprop="description">
+A file synchronizer restores consistency after multiple replicas
+of a filesystem have been changed independently. We
+present an algebra for reasoning about operations on filesystems
+and show that it is sound and complete with respect
+to a simple model. The algebra enables us to specify a
+file-synchronization algorithm that can be combined with
+several different conflict-resolution policies. By contrast,
+previous work builds the conflict-resolution policy into the
+specification, or worse, does not specify the synchronizer's
+behavior precisely. We classify synchronizers by asking
+whether conflicts can be resolved at a single disconnected
+replica and whether all replicas are identical after synchronization.
+We also discuss timestamps and argue that there
+is no good way to propagate timestamps when there is severe
+clock skew between replicas.
+</p>
+
+<h3>Full paper</h3>
+<ul>
+<li><a href="http://www.cs.tufts.edu/~nr/pubs/sync.pdf" target="_blank" itemprop="url">Read the published version of the paper &raquo;</a></li>
+<li><a href="/files/filesync-rsi.pdf" target="_blank" itemprop="url">Read the detailed, RSI version of the paper &raquo;</a></li>
+</ul>
+
+<h3>See also</h3>
+
+<p><a href="/algebraic-file-synchronization-2.html">A 2016 paper</a>
+that based on a new set of filesystem commands
+simplifies the definition of conflicting updates, and
+presents rigorous proofs that update detection and reconciliation work as intended
+and cannot be improved on.</p>
+
+<p>OCaml implementations of the algorithms described in the paper,
+originally intended to work with the
+<a href="http://www.cis.upenn.edu/~bcpierce/unison/" target="_blank">unison synchroniser</a>, are available
+on <a href="https://github.com/csirmaz/AlgebraicSynchronizer" target="_blank">GitHub</a>.</p>
+
+<h3>More</h3>
+<p>In 2000, I participated in the
+<a href="http://www.rsiaa.org" target="_blank">Research Science Institute (RSI)</a> at MIT, Cambridge.
+I worked
+with Prof. <a href="http://www.cs.tufts.edu/~nr/" target="_blank"  rel="nofollow">Norman Ramsey</a> (Harvard Univ., EECS)
+on this paper, which was ranked among the first five of all 75 papers at RSI. 
+The result was also presented
+at ESEC, the 8<span style="font-size:75%; vertical-align:top">th</span> European Software Engineering Conference and 
+9<span style="font-size:75%; vertical-align:top">th</span> ACM Sigsoft Symposium on Foundation of Software, 2001 in Vienna.</p>
+
+</div>
+</div></div></div><div id="submtdwrap"><div id="submtd"><div id="submtdinner"><div class="decor"></div><ul class="submenu"><li><a target="_blank" href="/files/linearize.pdf">Interpreting Neural Networks&nbsp;&raquo;</a></li><li><a href="/algebraic-file-synchronization-2.html">Algebraic File Synchronization: Adequacy and Completeness</a></li><li class="mactive"><a href="/algsyn.html">An Algebraic Approach to File Synchronization</a></li><li><a target="_blank" href="/files/csirmaz-protokoll.pdf">A Transmission Protocol over the LP Port&nbsp;&raquo;</a></li><li><a target="_blank" href="https://github.com/csirmaz/superloop">Superloop RNNs&nbsp;&raquo;</a></li><li><a target="_blank" href="https://github.com/csirmaz/TrainableOnlineClustering">Trainable Online Clustering&nbsp;&raquo;</a></li><li><a href="/php-beautifier-filters.html">PHP Beautifier Filters</a></li><li><a target="_blank" href="/NetArranger/">NetArranger&nbsp;&raquo;</a></li><li><a target="_blank" href="https://github.com/csirmaz/ESFS">ESFS: Snapshotting Filesystem&nbsp;&raquo;</a></li><li><a target="_blank" href="/athregeum/2009/drops-a-kinetic-painting/">Drops: A Kinetic Painting&nbsp;&raquo;</a></li><li><a href="/jmc-interface.html">Building an Interface</a></li><li><a href="/octopus.html">Octopus: A Puzzle Game</a></li><li><a href="/quarkxpress-word-footnotes.html">Footnote Macro</a></li><li><a href="/automata.html">Various Automata</a></li></ul></div></div></div><div id="sidebar"><div class="decor"></div><div class="sidebari"><div class="sec"><a href="http://www.linkedin.com/in/elodpalcsirmaz" target="_blank" class="sectitle"  rel="nofollow"><img src="/assets/img/base/linkedin.gif" style="vertical-align:-2px;" alt="LinkedIn Logo" /> LinkedIn &raquo;</a></div><div class="sec"><a href="https://github.com/csirmaz" target="_blank" class="sectitle">GitHub &raquo;</a></div>      <div class="sec">
+         <a class="sectitle" target="_blank" href="http://epcsirmaz.blogspot.com/">Tech blog &raquo;</a>
+         <ul id="blogentries" class="teaser">            <li class="more"><a target="_blank" href="http://epcsirmaz.blogspot.com/">Read the blog &raquo;</a></li>
+         </ul>
+      </div><div class="sec"><a href="https://arxiv.org/a/csirmaz_e_1.html" target="_blank" class="sectitle">arXiv &raquo;</a></div></div></div></div></div><div id="footer"><a href="/adpolicy">Terms and Conditions, Cookie and Privacy Policy</a></div></body></html>

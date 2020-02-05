@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Language" content="en">
+<meta name="robots" content="all,NOODP">
+<meta name="keywords" content="Csirmaz, Elod, Előd, Elöd, Pal, Pál">
+
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<meta name="viewport" content="initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Catamaran:100">
+<link rel="stylesheet" type="text/css" href="/assets/lightbox/css/lightbox.min.css"><link rel="stylesheet" type="text/css" href="/assets/css/main.css?200129003949"><script type="text/javascript" src="/assets/jquery/jquery-1.10.2.js"></script><script type="text/javascript" src="/assets/lightbox/js/lightbox.min.js"></script><title>PHP_Beautifier Filters - Keep Empty Lines &amp; Break Long Lists - Elod P Csirmaz</title><script>   lightbox.option({      resizeDuration: 0,      imageFadeDuration: 0,      wrapAround: true   });</script></head><body><div id="wrap"><div id="header"><div class="logowrap"><a class="logo" href="/">Elod Pal Csirmaz</a></div><ul class="mainmenu menu"><li class="mactive"><a href="/computing.html">Computing</a></li><li><a href="/fiction.html">Literature</a></li><li><a href="/contact.html">Contact</a></li></ul><ul class="midmenu menu"><li class="mactive"><a href="/computing.html">Software &amp; CompSci</a></li><li><a href="/design.html">Web &amp; Design</a></li><li><a target="_blank" href="http://www.linkedin.com/in/elodpalcsirmaz">LinkedIn&nbsp;&raquo;</a></li><li><a target="_blank" href="https://github.com/csirmaz">GitHub&nbsp;&raquo;</a></li><li><a target="_blank" href="http://epcsirmaz.blogspot.com">Tech Blog&nbsp;&raquo;</a></li><li class="last">&nbsp;</li></ul></div><div id="wrapinner"><div id="content"><div id="readablewidth"><div class="maincontent">
+
+I wrote three filters for <a href="https://github.com/clbustos/PHP_Beautifier" target="_blank"  rel="nofollow">PHP Beautifier</a>,
+a tool that reformats and tidies PHP scripts,
+which made it much more useful for me.
+<ul>
+
+<li><strong>KeepEmptyLines</strong> keeps an empty line wherever one or more empty lines are encountered in the source.
+</li>
+
+<li><p><strong>BreakLongLists</strong> breaks argument lists and arrays into multiple lines, but only if
+on a single line they would be too long. It has one parameter, <tt>maxlen</tt>, with which this limit can be set;
+the default is 70 characters.</p>
+
+<p>For example, it can turn this:</p>
+
+<pre>
+<b>function</b> dbexec<span style='color:#006e28;'>(</span><span style='color:#5555ff;'>$database_handle</span><span style='color:#006e28;'>,</span> <span style='color:#5555ff;'>$sql_query</span>=<span style='color:#bf0303;'>''</span><span style='color:#006e28;'>,</span> <span style='color:#5555ff;'>$bind_values</span>=<span style='color:#644a9b;'>array</span><span style='color:#006e28;'>(),</span> <span style='color:#5555ff;'>$callback</span>=<b>false</b><span style='color:#006e28;'>,</span> <span style='color:#5555ff;'>$return_modified_rows</span>=<b>false</b><span style='color:#006e28;'>)</span>{
+  <i><span style='color:#008000;'>// Magic happens here</span></i>
+}
+
+dbexec<span style='color:#006e28;'>(</span><span style='color:#5555ff;'>$my_database_handle</span><span style='color:#006e28;'>,</span> <span style='color:#bf0303;'>'select Firstname from Users where Surname=? and Stamp&gt;? and Active=? and ID in (&#63;)'</span><span style='color:#006e28;'>,</span>
+   <span style='color:#644a9b;'>array</span><span style='color:#006e28;'>(</span><span style='color:#bf0303;'>'Saunders-Smith'</span><span style='color:#006e28;'>,</span> <span style='color:#5555ff;'>$now</span>-<span style='color:#b08000;'>60</span>*<span style='color:#b08000;'>60</span>*<span style='color:#b08000;'>24</span>*<span style='color:#b08000;'>7</span>*<span style='color:#b08000;'>2</span><span style='color:#006e28;'>,</span> <span style='color:#5555ff;'>$searching_for_active</span><span style='color:#006e28;'>,</span> <span style='color:#644a9b;'>array</span><span style='color:#006e28;'>(</span>
+      <span style='color:#b08000;'>1</span><span style='color:#006e28;'>,</span>
+      <span style='color:#b08000;'>2</span><span style='color:#006e28;'>,</span>
+      <span style='color:#b08000;'>3</span><span style='color:#006e28;'>,</span>
+      <span style='color:#b08000;'>4</span><span style='color:#006e28;'>,</span>
+      <span style='color:#b08000;'>5</span>
+<span style='color:#006e28;'>)),</span> <b>function</b><span style='color:#006e28;'>(</span><span style='color:#5555ff;'>$row</span><span style='color:#006e28;'>)</span>{ <span style='color:#644a9b;'>print</span> <span style='color:#5555ff;'>$row</span><span style='color:#006e28;'>[</span><span style='color:#bf0303;'>'Firstname'</span><span style='color:#006e28;'>]</span>.<span style='color:#bf0303;'>&quot;</span><b><span style='color:#0f0f8f;'>\n</span></b><span style='color:#bf0303;'>&quot;</span><span style='color:#006e28;'>;</span> }<span style='color:#006e28;'>);</span>
+</pre>
+
+<p>into this:</p>
+
+<pre>
+<b>function</b> dbexec<span style='color:#006e28;'>(</span>
+   <span style='color:#5555ff;'>$database_handle</span><span style='color:#006e28;'>,</span>
+   <span style='color:#5555ff;'>$sql_query</span> = <span style='color:#bf0303;'>''</span><span style='color:#006e28;'>,</span>
+   <span style='color:#5555ff;'>$bind_values</span> = <span style='color:#644a9b;'>array</span><span style='color:#006e28;'>(),</span>
+   <span style='color:#5555ff;'>$callback</span> = <b>false</b><span style='color:#006e28;'>,</span>
+   <span style='color:#5555ff;'>$return_modified_rows</span> = <b>false</b>
+<span style='color:#006e28;'>)</span> {
+   <i><span style='color:#008000;'>// Magic happens here</span></i>
+
+}
+
+dbexec<span style='color:#006e28;'>(</span>
+   <span style='color:#5555ff;'>$my_database_handle</span><span style='color:#006e28;'>,</span>
+   <span style='color:#bf0303;'>'select Firstname from Users where Surname=? and Stamp&gt;? and Active=? and ID in (&#63;)'</span><span style='color:#006e28;'>,</span>
+   <span style='color:#644a9b;'>array</span><span style='color:#006e28;'>(</span>
+      <span style='color:#bf0303;'>'Saunders-Smith'</span><span style='color:#006e28;'>,</span>
+      <span style='color:#5555ff;'>$now</span> - <span style='color:#b08000;'>60</span> * <span style='color:#b08000;'>60</span> * <span style='color:#b08000;'>24</span> * <span style='color:#b08000;'>7</span> * <span style='color:#b08000;'>2</span><span style='color:#006e28;'>,</span>
+      <span style='color:#5555ff;'>$searching_for_active</span><span style='color:#006e28;'>,</span>
+      <span style='color:#644a9b;'>array</span><span style='color:#006e28;'>(</span><span style='color:#b08000;'>1</span><span style='color:#006e28;'>,</span> <span style='color:#b08000;'>2</span><span style='color:#006e28;'>,</span> <span style='color:#b08000;'>3</span><span style='color:#006e28;'>,</span> <span style='color:#b08000;'>4</span><span style='color:#006e28;'>,</span> <span style='color:#b08000;'>5</span><span style='color:#006e28;'>)</span>
+   <span style='color:#006e28;'>),</span>
+   <b>function</b> <span style='color:#006e28;'>(</span><span style='color:#5555ff;'>$row</span><span style='color:#006e28;'>)</span> {
+      <span style='color:#644a9b;'>print</span> <span style='color:#5555ff;'>$row</span><span style='color:#006e28;'>[</span><span style='color:#bf0303;'>'Firstname'</span><span style='color:#006e28;'>]</span> . <span style='color:#bf0303;'>&quot;</span><b><span style='color:#0f0f8f;'>\n</span></b><span style='color:#bf0303;'>&quot;</span><span style='color:#006e28;'>;</span>
+   }
+<span style='color:#006e28;'>);</span>
+</pre>
+</li>
+
+<li><strong>SpaceOpAssignments</strong> adds a single space before assignment operators that contain another operator
+like plus-equal or dot-equal.
+</li>
+</ul>
+
+<h2>Installation</h2>
+
+<p>The filters are now part of the <a href="https://github.com/clbustos/PHP_Beautifier" target="_blank"  rel="nofollow">PHP Beautifier GitHub repo</a> - the master branch,
+but not the latest release. Simply install PHP Beautifier using the latest commit.</p>
+
+<ul>
+<li>Alternatively, download the
+filters you'd like to use:
+
+<ul>
+<li>KeepEmptyLines - <a href="https://raw.githubusercontent.com/csirmaz/PHP_Beautifier/master/Beautifier/Filter/KeepEmptyLines.filter.php" target="_blank"  rel="nofollow">Download</a></li>
+<li>BreakLongLists - <a href="https://raw.githubusercontent.com/csirmaz/PHP_Beautifier/master/Beautifier/Filter/BreakLongLists.filter.php" target="_blank"  rel="nofollow">Download</a></li>
+<li>SpaceOpAssignments - <a href="https://raw.githubusercontent.com/csirmaz/PHP_Beautifier/master/Beautifier/Filter/SpaceOpAssignments.filter.php" target="_blank"  rel="nofollow">Download</a></li>
+</ul>
+</li>
+
+<li>Copy the files into your PHP_Beautifier installation, into the <tt>Beautifier/Filter</tt> folder.
+This might be, for example, at <tt>/usr/share/php/PHP/Beautifier/Filter</tt>.</li>
+
+<li>The filters are ready to use - simply include them in the <tt>php_beautifier</tt> command line as
+<tt>--filters="BreakLongLists(maxlen=70) KeepEmptyLines SpaceOpAssignments"</tt>.</li>
+</ul>
+
+</div></div></div><div id="submtdwrap"><div id="submtd"><div id="submtdinner"><div class="decor"></div><ul class="submenu"><li><a target="_blank" href="/files/linearize.pdf">Interpreting Neural Networks&nbsp;&raquo;</a></li><li><a href="/algebraic-file-synchronization-2.html">Algebraic File Synchronization: Adequacy and Completeness</a></li><li><a href="/algsyn.html">An Algebraic Approach to File Synchronization</a></li><li><a target="_blank" href="/files/csirmaz-protokoll.pdf">A Transmission Protocol over the LP Port&nbsp;&raquo;</a></li><li><a target="_blank" href="https://github.com/csirmaz/superloop">Superloop RNNs&nbsp;&raquo;</a></li><li><a target="_blank" href="https://github.com/csirmaz/TrainableOnlineClustering">Trainable Online Clustering&nbsp;&raquo;</a></li><li class="mactive"><a href="/php-beautifier-filters.html">PHP Beautifier Filters</a></li><li><a target="_blank" href="/NetArranger/">NetArranger&nbsp;&raquo;</a></li><li><a target="_blank" href="https://github.com/csirmaz/ESFS">ESFS: Snapshotting Filesystem&nbsp;&raquo;</a></li><li><a target="_blank" href="/athregeum/2009/drops-a-kinetic-painting/">Drops: A Kinetic Painting&nbsp;&raquo;</a></li><li><a href="/jmc-interface.html">Building an Interface</a></li><li><a href="/octopus.html">Octopus: A Puzzle Game</a></li><li><a href="/quarkxpress-word-footnotes.html">Footnote Macro</a></li><li><a href="/automata.html">Various Automata</a></li></ul></div></div></div><div id="sidebar"><div class="decor"></div><div class="sidebari"><div class="sec"><a href="http://www.linkedin.com/in/elodpalcsirmaz" target="_blank" class="sectitle"  rel="nofollow"><img src="/assets/img/base/linkedin.gif" style="vertical-align:-2px;" alt="LinkedIn Logo" /> LinkedIn &raquo;</a></div><div class="sec"><a href="https://github.com/csirmaz" target="_blank" class="sectitle">GitHub &raquo;</a></div>      <div class="sec">
+         <a class="sectitle" target="_blank" href="http://epcsirmaz.blogspot.com/">Tech blog &raquo;</a>
+         <ul id="blogentries" class="teaser">            <li class="more"><a target="_blank" href="http://epcsirmaz.blogspot.com/">Read the blog &raquo;</a></li>
+         </ul>
+      </div><div class="sec"><a href="https://arxiv.org/a/csirmaz_e_1.html" target="_blank" class="sectitle">arXiv &raquo;</a></div></div></div></div></div><div id="footer"><a href="/adpolicy">Terms and Conditions, Cookie and Privacy Policy</a></div></body></html>

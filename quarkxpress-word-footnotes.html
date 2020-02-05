@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Language" content="en">
+<meta name="robots" content="all,NOODP">
+<meta name="keywords" content="Csirmaz, Elod, Előd, Elöd, Pal, Pál">
+
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<meta name="viewport" content="initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Catamaran:100">
+<link rel="stylesheet" type="text/css" href="/assets/lightbox/css/lightbox.min.css"><link rel="stylesheet" type="text/css" href="/assets/css/main.css?200129003949"><script type="text/javascript" src="/assets/jquery/jquery-1.10.2.js"></script><script type="text/javascript" src="/assets/lightbox/js/lightbox.min.js"></script><title>Word Footnote Macro - Elod P Csirmaz</title><script>   lightbox.option({      resizeDuration: 0,      imageFadeDuration: 0,      wrapAround: true   });</script></head><body><div id="wrap"><div id="header"><div class="logowrap"><a class="logo" href="/">Elod Pal Csirmaz</a></div><ul class="mainmenu menu"><li class="mactive"><a href="/computing.html">Computing</a></li><li><a href="/fiction.html">Literature</a></li><li><a href="/contact.html">Contact</a></li></ul><ul class="midmenu menu"><li class="mactive"><a href="/computing.html">Software &amp; CompSci</a></li><li><a href="/design.html">Web &amp; Design</a></li><li><a target="_blank" href="http://www.linkedin.com/in/elodpalcsirmaz">LinkedIn&nbsp;&raquo;</a></li><li><a target="_blank" href="https://github.com/csirmaz">GitHub&nbsp;&raquo;</a></li><li><a target="_blank" href="http://epcsirmaz.blogspot.com">Tech Blog&nbsp;&raquo;</a></li><li class="last">&nbsp;</li></ul></div><div id="wrapinner"><div id="content"><div id="readablewidth"><div class="maincontent">
+
+<b>Word Footnote Macro</b><br><br>
+
+It has always been a problem to import Microsoft Word documents with footnotes
+into QuarkXPress, as footnote references are often truncated or omitted altogether
+both in the body text and in front of the notes. The following Microsoft Visual Basic
+macro can solve this problem: it converts footnote reference numbers in the body
+text to plain numbers in superscript, and copies the footnotes to the end of the
+document with their number appended in front of them with "##" included as a
+separator. Then, it asks the user whether to delete all the footnotes.
+
+<pre>
+If MsgBox("Make sure last paragraph is Normal", vbOKCancel) = vbCancel Then End
+
+' inserting plain text reference numbers 
+' and copying footnotes to the end of the document
+
+For i = 1 To ActiveDocument.Footnotes.Count
+  x$ = Format(ActiveDocument.Footnotes.Item(i).Index)
+
+  ActiveDocument.Footnotes.Item(i).Range.InsertBefore Text:=(x$ + "##")
+  ActiveDocument.Footnotes.Item(i).Range.Copy
+  s = ActiveDocument.Range.End
+  Selection.SetRange Start:=s, End:=s
+  Selection.TypeParagraph
+  Selection.PasteAndFormat Type:=wdFormatOriginalFormatting
+
+  s = ActiveDocument.Footnotes.Item(i).Reference.Start
+  Selection.SetRange Start:=s, End:=s
+  Selection.Font.Superscript = True
+  Selection.TypeText Text:=x$
+Next
+
+' deleting the footnotes
+
+If MsgBox("Conversion done. Delete footnotes?", vbOKCancel) = vbOK Then
+  For i = 1 To ActiveDocument.Footnotes.Count
+    ActiveDocument.Footnotes.Item(1).Delete
+  Next
+End If
+</pre>
+
+To install the macro, in Word, go to Tools <img src='/assets/img/base/to.gif' alt='--' title='' width="16px" height="12px" /> Macro <img src='/assets/img/base/to.gif' alt='--' title='' width="16px" height="12px" /> Macros..., type in
+an appropriate name for the new macro, click Create, and paste the above text
+between the Sub and End Sub tags. To run the macro, select Tools <img src='/assets/img/base/to.gif' alt='--' title='' width="16px" height="12px" /> Macro <img src='/assets/img/base/to.gif' alt='--' title='' width="16px" height="12px" />
+Macros..., select the macro just created, and click Run, or create a keyboard shortcut.
+Make sure that the cursor is in the body text and not in the footnotes, and that
+the last paragraph in the document is formatted with the Normal style.<br><br>
+
+<div class="tandc">
+ALL SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+</div>
+</div></div></div><div id="submtdwrap"><div id="submtd"><div id="submtdinner"><div class="decor"></div><ul class="submenu"><li><a target="_blank" href="/files/linearize.pdf">Interpreting Neural Networks&nbsp;&raquo;</a></li><li><a href="/algebraic-file-synchronization-2.html">Algebraic File Synchronization: Adequacy and Completeness</a></li><li><a href="/algsyn.html">An Algebraic Approach to File Synchronization</a></li><li><a target="_blank" href="/files/csirmaz-protokoll.pdf">A Transmission Protocol over the LP Port&nbsp;&raquo;</a></li><li><a target="_blank" href="https://github.com/csirmaz/superloop">Superloop RNNs&nbsp;&raquo;</a></li><li><a target="_blank" href="https://github.com/csirmaz/TrainableOnlineClustering">Trainable Online Clustering&nbsp;&raquo;</a></li><li><a href="/php-beautifier-filters.html">PHP Beautifier Filters</a></li><li><a target="_blank" href="/NetArranger/">NetArranger&nbsp;&raquo;</a></li><li><a target="_blank" href="https://github.com/csirmaz/ESFS">ESFS: Snapshotting Filesystem&nbsp;&raquo;</a></li><li><a target="_blank" href="/athregeum/2009/drops-a-kinetic-painting/">Drops: A Kinetic Painting&nbsp;&raquo;</a></li><li><a href="/jmc-interface.html">Building an Interface</a></li><li><a href="/octopus.html">Octopus: A Puzzle Game</a></li><li class="mactive"><a href="/quarkxpress-word-footnotes.html">Footnote Macro</a></li><li><a href="/automata.html">Various Automata</a></li></ul></div></div></div><div id="sidebar"><div class="decor"></div><div class="sidebari"><div class="sec"><a href="http://www.linkedin.com/in/elodpalcsirmaz" target="_blank" class="sectitle"  rel="nofollow"><img src="/assets/img/base/linkedin.gif" style="vertical-align:-2px;" alt="LinkedIn Logo" /> LinkedIn &raquo;</a></div><div class="sec"><a href="https://github.com/csirmaz" target="_blank" class="sectitle">GitHub &raquo;</a></div>      <div class="sec">
+         <a class="sectitle" target="_blank" href="http://epcsirmaz.blogspot.com/">Tech blog &raquo;</a>
+         <ul id="blogentries" class="teaser">            <li class="more"><a target="_blank" href="http://epcsirmaz.blogspot.com/">Read the blog &raquo;</a></li>
+         </ul>
+      </div><div class="sec"><a href="https://arxiv.org/a/csirmaz_e_1.html" target="_blank" class="sectitle">arXiv &raquo;</a></div></div></div></div></div><div id="footer"><a href="/adpolicy">Terms and Conditions, Cookie and Privacy Policy</a></div></body></html>

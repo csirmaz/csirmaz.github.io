@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!--
+This file is part of NetArranger
+<https://github.com/csirmaz/NetArranger>
+
+Copyright (c) 2014 Elod Csirmaz
+
+The MIT License (MIT)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+-->
+
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+   <meta http-equiv="Content-Language" content="en" />
+
+   <link rel="stylesheet" type="text/css" href="NetArranger.css" />
+
+   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+   <script type="text/javascript" src="NetArranger.js"></script>
+
+   <title>NetArranger Demo</title>
+
+   <style type="text/css">
+      /* For the custom CSS class specified below */
+      #board .point.myclass {
+         background:#dfd;
+      }
+      #board .arrow.myclass {
+         border-color:#090;
+      }
+   </style>
+</head>
+<body>
+
+<h1>NetArranger Demo</h1>
+<div id="board"></div>
+
+<ul>
+   <li>Tools:
+      <a href="javascript://" onclick="netarr.zoom(true)">Zoom in</a> |
+      <a href="javascript://" onclick="netarr.zoom(false)">Zoom out</a> |
+      <a href="javascript://" onclick="netarr.scroll(true, false)">Left</a> |
+      <a href="javascript://" onclick="netarr.scroll(true, true)">Right</a> |
+      <a href="javascript://" onclick="netarr.scroll(false, false)">Up</a> |
+      <a href="javascript://" onclick="netarr.scroll(false, true)">Down</a> |
+      <a href="javascript://" onclick="netarr.resetheat()">Continue arranging</a>
+   </li>
+   <li>Click on a node to highlight outgoing connections</li>
+   <li>Drag nodes to help arrange the graph</li>
+   <li>Refresh the page to start from a new random distribution</li>
+</ul>
+
+<hr/>
+<p>by <a href="http://www.epcsirmaz.com/">Elod Csirmaz</a></p>
+<p>Download NetArranger from <a href="https://github.com/csirmaz/NetArranger">GitHub</a></p>
+
+<script type="text/javascript">
+netarr = new NetArranger.Main(
+   {
+      'a' : { html:'NA', c:['b', 'c'] },
+      'b' : { html:'NB', c:['d', 'e'], css:'myclass' },
+      'c' : { html:'NC', c:['d'] },
+      'd' : { html:'ND', c:['f'] },
+      'e' : { html:'NE', c:['g', 'h'] },
+      'f' : { html:'NF', c:['g'] },
+      'g' : { html:'NG'},
+      'h' : { html:'NH'},
+      'i' : { html:'NI', c:['j'] },
+      'j' : { html:'NJ', c:['k'] },
+      'k' : { html:'NK'},
+      'l' : { html:'NL', c:['j'] },
+      'm' : { html:'NM', c:['n','o'] },
+      'n' : { html:'NN', c:['m'] },
+      'o' : { html:'NO'},
+      'p' : { html:'NP'}
+   },
+   {
+      board: '#board',
+      boardsize: [500, 500]
+   }
+);
+</script>
+
+<a href="https://github.com/csirmaz/NetArranger"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+
+</body>
+</html>
