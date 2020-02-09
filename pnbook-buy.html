@@ -29,7 +29,12 @@ Use one of the e-mail addresses listed on my
 <textarea class="contacttext" name="dd" rows="5"></textarea><br>
 <input type="hidden" name="vv" value="" />
 <script type="text/javascript">
-document.cf.vv.value='9pm70639';
+$.ajax({
+    data: {gevv: 1},
+    method: 'POST',
+    success: function(data) { document.cf.vv.value = data; },
+    url: 'http://www.epcsirmaz.com/dyn/collect.php'
+});
 </script>
 <input type="hidden" name="ss" value="web submit" />
 <input class="contactbutton" type="submit" value="Submit" />
