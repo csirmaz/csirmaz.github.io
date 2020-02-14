@@ -538,9 +538,6 @@ Use .thumbfloat[ div, div ... ]
    content:" »";
 }
 
-.levelcim{border-bottom:1px solid #ffffff;}
-.levelcim:hover{border-bottom:1px solid #0066ee; /* 0066cc */ }
-
 .essaydesc{
    margin-left:40px;
    margin-top:0.4em;
