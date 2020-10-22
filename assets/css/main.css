@@ -594,12 +594,13 @@ table.playscript td.s{
 }
 
 .freetag {
-   color:#fff;
-   background:#393;
+   color:#393;
+   border:1px solid #393;
+   border-radius: 2px;
    display:inline-block;
    padding: 2px;
    line-height: 1em;
-   font-size: 90%
+   font-size: 80%
 }
 
 a.actionlink{
