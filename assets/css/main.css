@@ -22,6 +22,7 @@ body {
   background-color:#fff;
   font-family:"Open Sans", Helvetica, sans-serif;
   line-height:1.4;
+  font-size:120%;
 }
 
 #wrap {
@@ -608,8 +609,6 @@ a.actionlink{
    padding:7px;
    color:#fff;
    background:#393;
-   font-size:120%;
-   font-weight:bold;
    display:inline-block;
 }
 
