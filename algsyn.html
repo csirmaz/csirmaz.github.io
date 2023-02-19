@@ -54,17 +54,19 @@ clock skew between replicas.
 
 <h3>See also</h3>
 
-<p><a href="/algebraic-file-synchronization-2.html">A 2016 paper</a>
-that based on a new set of filesystem commands
-simplifies the definition of conflicting updates, and
-presents rigorous proofs that update detection and reconciliation work as intended
-and cannot be improved on.</p>
+<p>A number of other papers extending these results:
+<a href="/algebraic-file-synchronization-2.html">Algebraic File Synchronization: Adequacy and Completeness (2016)</a>,
+<a href="https://arxiv.org/abs/2110.06313" target="_blank">Algebra of Data Reconciliation (2021)</a>,
+<a href="https://akjournals.com/view/journals/012/aop/article-10.1556-012.2022.01529/article-10.1556-012.2022.01529.xml" target="_blank"  rel="nofollow">in Studia (2022)</a>,
+<a href="https://arxiv.org/abs/2210.04565" target="_blank">Data Synchronization: A Complete Theoretical Solution for Filesystems (2022)</a>,
+<a href="https://www.mdpi.com/1999-5903/14/11/344" target="_blank"  rel="nofollow">in Future Internet (2022)</a>,
+Synchronizing Many Filesystems in Near Linear Time (2023).
+</p>
 
-<p><a href="https://arxiv.org/abs/2110.06313" target="_blank">A 2021 paper further extending these results</a></p>
 
 <p>OCaml implementations of the algorithms described in the paper,
 originally intended to work with the
-<a href="http://www.cis.upenn.edu/~bcpierce/unison/" target="_blank">unison synchroniser</a>, are available
+<a href="http://www.cis.upenn.edu/~bcpierce/unison/" target="_blank"  rel="nofollow" >unison synchroniser</a>, are available
 on <a href="https://github.com/csirmaz/AlgebraicSynchronizer" target="_blank">GitHub</a>.</p>
 
 <h3>More</h3>
