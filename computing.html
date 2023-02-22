@@ -26,6 +26,7 @@
 <div class="desc">
 <strong class="title"><a href="https://arxiv.org/abs/2302.09666" target="_blank">Synchronizing Many Filesystems in Near Linear Time</a></strong>
 By Elod Csirmaz and <a href="http://www.renyi.hu/~csirmaz" target="_blank">Laszlo Csirmaz</a>.
+
 Finding a provably correct subquadratic synchronization algorithm for 
 many filesystem replicas is
 one of the main theoretical problems in Operational Transformation (OT) and
@@ -33,24 +34,16 @@ Conflict-free Replicated Data Types (CRDT) frameworks.
 Based on the Algebraic Theory of Filesystems, which incorporates
 non-commutative filesystem commands natively, we developed and built a 
 proof-of-concept implementation of an algorithm which synchronizes an arbitrary
-number of replicas. \blue It is provably correct, \eblue
+number of replicas. It is provably correct,
 and has linear complexity after an initial
 sorting phase. It works by
 identifying conflicting command pairs and requesting one of them to be
 removed; can be guided to reach any of the theoretically possible synchronized
 states.
 
-The algorithm allows asynchronous usage. After the client sends a
-synchronization request, the local replica remains available for further
-modification. When the synchronization instructions arrive, 
-they can be merged with the changes made since the synchronization request.
-It also works on filesystems with directed acyclic graph-based path structure
-in place of the traditional tree-like one. Thus it can be
-applied to
-filesystems with hard or soft links as long as the links create no loops.
 Available on <a href="https://arxiv.org/abs/2302.09666" target="_blank">arXiv &raquo;</a>.
 See sample implementation of
-<a href="https://github.com/csirmaz/algebraic-reconciler" target="_blank">the filesystem synchronization algorithms on GitHub &raquo;</a>.
+<a href="https://github.com/csirmaz/algebraic-reconciler" target="_blank">the filesystem synchronization algorithms on GitHub &raquo;</a>
 </div>
 </li>
 
