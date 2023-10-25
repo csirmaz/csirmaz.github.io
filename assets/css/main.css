@@ -604,12 +604,18 @@ table.playscript td.s{
    font-size: 80%
 }
 
-a.actionlink{
+a.actionlink,
+a.actionlink2{
    margin:0.2em 0 0.2em 1em;
    padding:7px;
    color:#fff;
    background:#393;
    display:inline-block;
+}
+
+a.actionlink2 {
+    color: #000;
+    background: #eb1;
 }
 
 .lbgallery {
