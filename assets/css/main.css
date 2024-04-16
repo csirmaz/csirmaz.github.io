@@ -623,3 +623,8 @@ a.actionlink2 {
 }
 
 .lbgallery img { height: 4em; }
+
+.bigimg {
+    max-width:100%;
+    max-height:27rem;
+}
