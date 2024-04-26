@@ -622,9 +622,10 @@ a.actionlink2 {
    margin:1em 0;
 }
 
-.lbgallery img { height: 4em; }
+.lbgallery img { height: 4em; cursor: zoom-in; }
 
 .bigimg {
-    max-width:100%;
-    max-height:27rem;
+    max-width: 100%;
+    max-height: 27rem;
+    cursor: zoom-in;
 }
