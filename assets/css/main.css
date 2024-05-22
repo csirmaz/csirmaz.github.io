@@ -608,14 +608,14 @@ a.actionlink,
 a.actionlink2{
    margin:0.2em 0 0.2em 1em;
    padding:7px;
-   color:#fff;
-   background:#393;
+   color:#393;
+   border:1px solid #393;
    display:inline-block;
 }
 
 a.actionlink2 {
-    color: #000;
-    background: #eb1;
+    color: #b91;
+    border: 1px solid #b91;
 }
 
 .lbgallery {
